@@ -28,5 +28,5 @@ const initDb = (callback) => {
   
   module.exports = {
     initDb,
-    getDatabase,
+    getDatabase
   };
