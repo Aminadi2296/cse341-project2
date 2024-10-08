@@ -22,7 +22,6 @@ const getById = async (req, res) => {
 
 const createCountry = async (req, res) =>{
     // swagger.tags = [contacts]
-  const countryId = new ObjectId(req.params.id);
   const country = {
     name: req.body.name,
     capital: req.body.capital,
@@ -55,7 +54,7 @@ const updateCountry = async (req, res) =>{
     currency: req.body.currency,
     flag: req.body.flag
   };
-  const response = await mongodb.getDatabase().db().collection('countries').replaceOne({_id: countryId }, country);
+  const response = await mongodb.getDatabase().db().collection('countries').replaceOne({ _id: countryId }, country);
   if (response.modifiedCount > 0){
     res.status(204).send();
   } else {

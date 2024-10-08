@@ -11,7 +11,7 @@ router.get('/countries', controller.getAll);
 router.get('/countries/:id', controller.getById);
 
 router.post('/countries', controller.createCountry);
-router.put('/countries', controller.updateCountry);
+router.put('/countries/:id', controller.updateCountry);
 router.delete('/countries/:id', controller.deleteCountry);
 
 module.exports = router;
