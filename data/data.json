@@ -1,88 +1,82 @@
 [
-      {
-        "name": "United States",
-        "capital": "Washington, D.C.",
-        "population": 331002651,
-        "area": 9833517,
-        "region": "Americas",
-        "languages": ["English"],
-        "currency": {
-          "name": "United States Dollar",
-          "code": "USD"
-        },
-        "flag": "https://restcountries.com/v3.1/data/usa.svg"
-      },
-      {
-        "name": "Germany",
-        "capital": "Berlin",
-        "population": 83783942,
-        "area": 357022,
-        "region": "Europe",
-        "languages": ["German"],
-        "currency": {
-          "name": "Euro",
-          "code": "EUR"
-        },
-        "flag": "https://restcountries.com/v3.1/data/deu.svg"
-      },
-      {
-        "name": "Japan",
-        "capital": "Tokyo",
-        "population": 126476461,
-        "area": 377975,
-        "region": "Asia",
-        "languages": ["Japanese"],
-        "currency": {
-          "name": "Japanese Yen",
-          "code": "JPY"
-        },
-        "flag": "https://restcountries.com/v3.1/data/jpn.svg"
-      },
-      {
-        "name": "Brazil",
-        "capital": "Brasília",
-        "population": 212559417,
-        "area": 8515767,
-        "region": "Americas",
-        "languages": ["Portuguese"],
-        "currency": {
-          "name": "Brazilian Real",
-          "code": "BRL"
-        },
-        "flag": "https://restcountries.com/v3.1/data/bra.svg"
-      },
-      {
-        "name": "Australia",
-        "capital": "Canberra",
-        "population": 25499884,
-        "area": 7692024,
-        "region": "Oceania",
-        "languages": ["English"],
-        "currency": {
-          "name": "Australian Dollar",
-          "code": "AUD"
-        },
-        "flag":  "https://restcountries.com/v3.1/data/austr.svg"
-     },
-     {
-       "name":"India",  
-       "capital":"New Delhi",  
-       "population":1393409038,  
-       "area":3287263,  
-       "region":"Asia",  
-       "languages":["Hindi", "English"],  
-       "currency":{"name":"Indian Rupee", "code":"INR"},  
-       "flag":"https://restcountries.com/v3.1/data/ind.svg"  
-     },
-     {
-       "name":"South Africa",  
-       "capital":"Pretoria",  
-       "population":59308690,  
-       "area":1219090,  
-       "region":"Africa",  
-       "languages":["Afrikaans", "English", "Zulu"],  
-       "currency":{"name":"South African Rand", "code":"ZAR"},  
-       "flag":"https://restcountries.com/v3.1/data/zaf.svg"    
-     }
+  {
+    "name": "United States",
+    "capital": "Washington, D.C.",
+    "population": 331002651,
+    "area": 9833517,
+    "region": "Americas",
+    "languages": ["English"],
+    "currency": "United States Dollar",
+    "flag": "https://restcountries.com/v3.1/data/usa.svg"
+  },
+  {
+    "name": "Germany",
+    "capital": "Berlin",
+    "population": 83783942,
+    "area": 357022,
+    "region": "Europe",
+    "languages": ["German"],
+    "currency": "Euro",
+    "flag": "https://restcountries.com/v3.1/data/deu.svg"
+  },
+  {
+    "name": "Japan",
+    "capital": "Tokyo",
+    "population": 126476461,
+    "area": 377975,
+    "region": "Asia",
+    "languages": ["Japanese"],
+    "currency": "Japanese Yen",
+    "flag": "https://restcountries.com/v3.1/data/jpn.svg"
+  },
+  {
+    "name": "Brazil",
+    "capital": "Brasília",
+    "population": 212559417,
+    "area": 8515767,
+    "region": "Americas",
+    "languages": ["Portuguese"],
+    "currency": "Brazilian Real",
+    "flag": "https://restcountries.com/v3.1/data/bra.svg"
+  },
+  {
+    "name": "Australia",
+    "capital": "Canberra",
+    "population": 25499884,
+    "area": 7692024,
+    "region": "Oceania",
+    "languages": ["English"],
+    "currency": "Australian Dollar",
+    "flag": "https://restcountries.com/v3.1/data/austr.svg"
+  },
+  {
+    "name": "India",
+    "capital": "New Delhi",
+    "population": 1393409038,
+    "area": 3287263,
+    "region": "Asia",
+    "languages": ["Hindi", "English"],
+    "currency": "Indian Rupee",
+    "flag": "https://restcountries.com/v3.1/data/ind.svg"
+  },
+  {
+    "name": "South Africa",
+    "capital": "Pretoria",
+    "population": 59308690,
+    "area": 1219090,
+    "region": "Africa",
+    "languages": ["Afrikaans", "English", "Zulu"],
+    "currency": "South African Rand",
+    "flag": "https://restcountries.com/v3.1/data/zaf.svg"
+  },
+  {
+    "name": "Venezuela",
+    "capital": "Caracas",
+    "population": 28300000,
+    "area": 916445,
+    "region": "South America",
+    "languages": ["Spanish"],
+    "currency": "Bolivar",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg"
+  }
 ]
-  

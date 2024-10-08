@@ -23,14 +23,17 @@ const getById = async (req, res) => {
 const createCountry = async (req, res) =>{
     // swagger.tags = [contacts]
   const countryId = new ObjectId(req.params.id);
-  const user = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
+  const country = {
+    name: req.body.name,
+    capital: req.body.capital,
+    population: req.body.population,
+    area: req.body.area,
+    region: req.body.region,
+    languages: [req.body.languages],
+    currency: req.body.currency,
+    flag: req.body.flag
   };
-  const response = await mongodb.getDatabase().db().collection('contacts').insertOne(user);
+  const response = await mongodb.getDatabase().db().collection('countries').insertOne(country);
   if (response.acknowledged){
     res.status(204).send();
   } else {
@@ -38,17 +41,21 @@ const createCountry = async (req, res) =>{
   }
 };
 
+
 const updateCountry = async (req, res) =>{
     // swagger.tags = [contacts]
-  const userId = new ObjectId(req.params.id);
-  const user = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
+  const countryId = new ObjectId(req.params.id);
+  const country = {
+    name: req.body.name,
+    capital: req.body.capital,
+    population: req.body.population,
+    area: req.body.area,
+    region: req.body.region,
+    languages: [req.body.languages],
+    currency: req.body.currency,
+    flag: req.body.flag
   };
-  const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({_id: userId}, user);
+  const response = await mongodb.getDatabase().db().collection('countries').replaceOne({_id: countryId }, country);
   if (response.modifiedCount > 0){
     res.status(204).send();
   } else {
@@ -58,8 +65,8 @@ const updateCountry = async (req, res) =>{
 
 const deleteCountry = async (req, res) =>{
     // swagger.tags = [contacts]
-  const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({_id: userId});
+  const countryId = new ObjectId(req.params.id);
+  const response = await mongodb.getDatabase().db().collection('countries').deleteOne({_id: countryId});
   if (response.deleteCount > 0){
     res.status(204).send();
   } else {
@@ -67,4 +74,4 @@ const deleteCountry = async (req, res) =>{
   }
 }
 
-module.exports = {getAll, getById};
+module.exports = {getAll, getById, createCountry, updateCountry, deleteCountry};
