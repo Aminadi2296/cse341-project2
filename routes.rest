@@ -1,0 +1,48 @@
+//LOCALHOST
+
+# Get all countries
+GET http://localhost:8089/countries
+
+# Get country by id
+GET http://localhost:8089/countries/66f5c41bea5613d19e67143c
+
+# Create country
+POST http://localhost:8089/countries HTTP/1.1
+content-type: application/json
+
+ {
+    "name": "Spain",
+    "capital": "Madrid",
+    "population": 51870000,
+    "area": 916445,
+    "region": "Europe",
+    "languages":"Spanish",
+    "currency": "Euro",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_spain.svg"
+  }
+
+# put country
+POST http://localhost:8089/countries/IDshouldBeHere!
+Content-type: application/json
+
+ {
+    "name": "Spain",
+    "capital": "Madrid",
+    "population": 51870000,
+    "area": 916445,
+    "region": "Europe",
+    "languages":"Spanish",
+    "currency": "Euro",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_spain.svg"
+  }
+
+# DELETE country
+DELETE http://localhost:8089/countries/addIDHereeee
+
+
+//PRODUCTION
+# Get all countries
+GET https://cse341-project1-ppn6.onrender.com/countries
+
+# Get country by id
+GET https://cse341-project1-ppn6.onrender.com/countries/66f5c41bea5613d19e67143c
