@@ -12,6 +12,9 @@ const getAll = async (req, res, next) => {
 
 
 const getById = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid country id to find a country.');
+  }
     const countryId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('countries').find({ _id: countryId });
     result.toArray().then((lists) => {
@@ -36,7 +39,7 @@ const createCountry = async (req, res) =>{
   if (response.acknowledged){
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'some error ocurred while updating the user.')
+    res.status(500).json(response.error || 'some error ocurred while creating the country.')
   }
 };
 
@@ -58,12 +61,15 @@ const updateCountry = async (req, res) =>{
   if (response.modifiedCount > 0){
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || 'some error ocurred while updating the user.')
+    res.status(500).json(response.error || 'some error ocurred while updating the country.')
   }
 };
 
 const deleteCountry = async (req, res) =>{
     // swagger.tags = [contacts]
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid contact id to delete a country.');
+    }
   const countryId = new ObjectId(req.params.id);
   const response = await mongodb.getDatabase().db().collection('countries').deleteOne({_id: countryId});
   if (response.deleteCount > 0){
