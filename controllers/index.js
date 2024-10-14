@@ -1,10 +1,14 @@
+const { messages } = require('validatorjs/src/lang');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
   // swagger.tags = [contacts]
   const result = await mongodb.getDatabase().db().collection('countries').find();
-  result.toArray().then((lists) => {
+  result.toArray((err, lists)=>{
+    if (err){
+      res.status(400).json({message: err});
+    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists); // we just need the first one (the only one)
   });
@@ -17,7 +21,10 @@ const getById = async (req, res) => {
   }
     const countryId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('countries').find({ _id: countryId });
-    result.toArray().then((lists) => {
+    result.toArray((err, lists)=>{
+      if (err){
+        res.status(400).json({message: err})
+      }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]); 
       });
