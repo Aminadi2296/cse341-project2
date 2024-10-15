@@ -2,33 +2,62 @@ const { messages } = require('validatorjs/src/lang');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
-  // swagger.tags = [contacts]
-  const result = await mongodb.getDatabase().db().collection('countries').find();
-  result.toArray((err, lists)=>{
-    if (err){
-      res.status(400).json({message: err});
-    }
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists); // we just need the first one (the only one)
-  });
-};
+// const getAll = async (req, res, next) => {
+//   // swagger.tags = [contacts]
+//   const result = await mongodb.getDatabase().db().collection('countries').find();
+//   result.toArray((err, lists)=>{
+//     if (err){
+//       res.status(400).json({message: err});
+//     }
+//     res.setHeader('Content-Type', 'application/json');
+//     res.status(200).json(lists); // we just need the first one (the only one)
+//   });
+// };
 
+const getAll = async (req, res, next) => {
+  try {
+    const result = await mongodb.getDatabase().db().collection('countries').find().toArray();
+    res.status(200).json(result);
+  } catch (err) {
+    console.error(err); // Log the error for debugging
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+  }
+};
 
 const getById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid country id to find a country.');
+    return res.status(400).json({ message: 'Must use a valid country id to find a country.' });
   }
-    const countryId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db().collection('countries').find({ _id: countryId });
-    result.toArray((err, lists)=>{
-      if (err){
-        res.status(400).json({message: err})
-      }
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]); 
-      });
+  const countryId = new ObjectId(req.params.id);
+  try {
+    const result = await mongodb.getDatabase().db().collection('countries').find({ _id: countryId }).toArray();
+
+    if (result.length === 0) {
+      return res.status(404).json({ message: 'Country not found.' });
+    }
+    res.status(200).json(result[0]);
+  } catch (err) {
+    console.error(err); // Log the error for debugging
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+  }
 };
+
+
+
+// const getById = async (req, res) => {
+//   if (!ObjectId.isValid(req.params.id)) {
+//     res.status(400).json('Must use a valid country id to find a country.');
+//   }
+//     const countryId = new ObjectId(req.params.id);
+//     const result = await mongodb.getDatabase().db().collection('countries').find({ _id: countryId });
+//     result.toArray((err, lists)=>{
+//       if (err){
+//         res.status(400).json({message: err})
+//       }
+//         res.setHeader('Content-Type', 'application/json');
+//         res.status(200).json(lists[0]); 
+//       });
+// };
 
 const createCountry = async (req, res) =>{
     // swagger.tags = [contacts]
